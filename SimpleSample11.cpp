@@ -122,10 +122,10 @@ int WINAPI wWinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdL
     _CrtSetDbgFlag( _CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF );
 #endif
 	
-	// DXUT создаст и использует лучшее устройство (либо D3D9, либо D3D11)	
+    // DXUT создаст и использует лучшее устройство (либо D3D9, либо D3D11)	
     // который доступен в системе в зависимости от того, какие обратные вызовы D3D установлены ниже    
 	
-	// Установить обратные вызовы DXUT
+    // Установить обратные вызовы DXUT
     DXUTSetCallbackMsgProc( MsgProc );
     DXUTSetCallbackKeyboard( OnKeyboard );
     DXUTSetCallbackFrameMove( OnFrameMove );
@@ -386,7 +386,6 @@ void CALLBACK OnD3D11FrameRender( ID3D11Device* pd3dDevice, ID3D11DeviceContext*
     pd3dImmediateContext->PSSetSamplers( 0, 1, &g_pSamLinear );
 
     // Рендеринг объектов здесь...
-
     DXUT_BeginPerfEvent( DXUT_PERFEVENTCOLOR, L"HUD / Stats" );
     g_HUD.OnRender( fElapsedTime );
     g_SampleUI.OnRender( fElapsedTime );
@@ -471,7 +470,7 @@ bool CALLBACK ModifyDeviceSettings( DXUTDeviceSettings* pDeviceSettings, void* p
     }
 
     // Для первого созданного устройства, если оно является REF-устройством, 
-	// можно дополнительно отобразить диалоговое окно с предупреждением.
+    // можно дополнительно отобразить диалоговое окно с предупреждением.
     static bool s_bFirstTime = true;
     if( s_bFirstTime )
     {
@@ -506,7 +505,7 @@ LRESULT CALLBACK MsgProc( HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam, bo
                           void* pUserContext )
 {
     // Передавайте сообщения в вызовы диспетчера диалоговых ресурсов, 
-	// чтобы состояние графического интерфейса обновлялось правильно.
+    // чтобы состояние графического интерфейса обновлялось правильно.
     *pbNoFurtherProcessing = g_DialogResourceManager.MsgProc( hWnd, uMsg, wParam, lParam );
     if( *pbNoFurtherProcessing )
         return 0;
@@ -527,7 +526,7 @@ LRESULT CALLBACK MsgProc( HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam, bo
         return 0;
 
     // Передайте все оставшиеся сообщения Windows на камеру, 
-	// чтобы она могла реагировать на ввод пользователя.
+    // чтобы она могла реагировать на ввод пользователя.
     g_Camera.HandleMessages( hWnd, uMsg, wParam, lParam );
 
     return 0;
